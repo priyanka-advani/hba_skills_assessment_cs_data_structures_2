@@ -1,0 +1,62 @@
+Recursion
+
+1.  Recursion is when a function calls itself. It helps you solve a problem by breaking it down into smaller instances of the same problem until you reach the base case and solving each of those smaller instances.
+
+2.  You need to have a base case because it provides a solution without using recursion; without the base case, the function would never return anything because the recursion would never stop (and you would get a stack overflow error due to excessive memory usage).
+
+
+Graphs
+
+1.  A graph is similar to a tree in that it is comprised of connected nodes.
+
+2.  A graph is different from a tree because it can contain loops (any node can connect to any other node, including itself). Unlike trees, which are always directed (because they have a hierarchy), graphs can be either directed (ex. food chain) or undirected (ex. Facebook friends list). Graph edges connecting two nodes can also have weights (ex. cost).
+
+3.  Flight paths between cities; the cities would be the nodes, the flight paths would be the edges, and the edges can be weighted (ex. ticket prices or number of flights).
+
+
+Performance of Different Data Structures
+
+Data Structure                  Index   Search  Add-R   Add-L   Pop-L   Pop-R
+Python List (Array)             O(1)    O(n)    O(1)    O(n)    O(n)    O(1)
+Linked List                     O(n)    O(n)    O(1)    O(1)    O(1)    O(n)
+Doubly-Linked List              O(n)    O(n)    O(1)    O(1)    O(1)    O(1)
+Queue (as Array)                X       X       O(1)    X       O(n)    X
+Queue (as LL or DLL)            X       X       O(1)    X       O(1)    X
+Stack (as Array, LL, or DLL)    X       X       O(1)    X       X       O(1)
+Deque (as DLL)                  X       X       O(1)    O(1)    O(1)    O(1)
+
+Python List (Array): when adding or popping from the left of the list, the runtime is O(n) because all other items in the list need to be shifted by one index (left for popping, right for adding). Popping or adding to the end of the list is O(1) because you are simply adding or removing a pointer to a value in memory.
+
+Linked List: indexing and searching both require traversing the entire list, so the runtime is O(n). Adding or removing from the beginning of a linked list has a runtime of O(1) because you only have to update which node the head attribute of the linked list points to. Adding the end of a linked list has a runtime of O(1) assuming that the linked list has a tail attribute, since you only change the current tail's next attibute to point to the next node and update the linked list's tail attribute to the new node. Removing from the end has a runtime of O(n) because you have to traverse the list to find the node before the tail, update its next attribute to None, and point the list's tail attribute the the new tail.
+
+Doubly-Linked List: the only difference in runtime between a singly- and doubly-linked list is removing an item from the end, which is O(1) for a doubly-linked list, since you can get the item before the tail using its previous attribute instead of traversing the entire list.
+
+Queue (as Array): same runtimes for adding to the end and popping from the beginning as a Python list, which is also an array.
+
+Queue (as LL or DLL): same runtimes for adding to the end and popping from the beginning as Linked Lists / Doubly-Linked Lists.
+
+Stack (as Array, LL, or DLL): same runtimes for adding to and removing from the same end as arrays, linked lists, and doubly-linked lists. (If using a linked list, you must add to and remove from the beginning in order to achieve the O(1) runtime).
+
+Deque (as DLL): same runtimes as doubly-linked lists.
+
+
+Data Structure          Get         Add         Delete      Iterate     Memory
+Dictionary (Hash Map)   O(1)        O(1)        O(1)        O(n)        medium
+Set (Hash Map)          O(1)        O(1)        O(1)        O(n)        medium
+Binary Search Tree      O(log n)    O(log n)    O(log n)    O(1)        a little
+Tree                    O(n)        O(1)        O(1)        O(1)        a little
+
+Set (Hash Map): a set is equivalent to a dictionary without values, so it has the same runtimes and memory requirements as a dictionary.
+
+Binary Search Tree: assuming a balanced BST, because of the way the nodes are organized (higher values on the right, lower values on the left), you can eliminate half the incorrect answers each time you go down a level of depth, which means finding, adding, or deleting an item has a runtime of O(log n). This could be O(n) if the tree is unbalanced or if you have to re-balance it after adding or removing and item. Finding the next item in the tree is O(1) because each node has a children attribute. They take up relatively little memory, since you only store the nodes themselves, without allocating extra space.
+
+Tree: finding a node has a runtime of O(n) because you have to traverse the tree and check every node. Adding or deleting a node has a runtime of O(1) if you already know which node to add to/delete from, since you only have to update its children attribute. Finding the next item also has a runtime of O(1), since every node has a children attribute. It takes up relatively little memory, since you only store the nodes themselves, without allocating extra space.
+
+
+Sorting
+
+1.  Bubble sort iterates through a list, comparing pairs of numbers and swapping their indices if they are out of order (i.e., if the higher number is to the left of a lower number). It "bubbles" up the biggest item to the end of the list, the second biggest to the next-to-last position, etc.
+
+2.  Merge sort splits a list down into smaller lists until they reach a length of 1 (meaning the list is sorted), then merges the sorted lists back together and returns a new, sorted list.
+
+3.  Quicksort uses one item in the list as a "pivot" and moves all items less than the pivot to the left of the pivot and items greater than the pivot to the right of the pivot. This process is then repeated on each side of the original pivot, using two new items as pivots.
